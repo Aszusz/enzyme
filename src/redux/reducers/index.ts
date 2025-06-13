@@ -1,9 +1,14 @@
 import { combineReducers } from 'redux';
-import timeReducer from './timeReducer';
+import fileReducer, { FileState } from './fileReducer';
 
+// Root reducer
 const rootReducer = combineReducers({
-  time: timeReducer
+  file: fileReducer
 });
 
-export type RootState = ReturnType<typeof rootReducer>;
+// Root state type
+export type RootState = {
+  file: FileState;
+};
+
 export default rootReducer;

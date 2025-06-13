@@ -1,4 +1,4 @@
-// Action types for time
-export const FETCH_TIME_REQUEST = 'FETCH_TIME_REQUEST';
-export const FETCH_TIME_SUCCESS = 'FETCH_TIME_SUCCESS';
-export const FETCH_TIME_FAILURE = 'FETCH_TIME_FAILURE';
+// Action types for file dialog
+export const OPEN_FILE_REQUEST = 'OPEN_FILE_REQUEST';
+export const OPEN_FILE_SUCCESS = 'OPEN_FILE_SUCCESS';
+export const OPEN_FILE_FAILURE = 'OPEN_FILE_FAILURE';

@@ -1,41 +1,41 @@
 import { 
-  FETCH_TIME_REQUEST, 
-  FETCH_TIME_SUCCESS, 
-  FETCH_TIME_FAILURE 
+  OPEN_FILE_REQUEST, 
+  OPEN_FILE_SUCCESS, 
+  OPEN_FILE_FAILURE
 } from '../actions/types';
 import { AnyAction } from 'redux';
 
 // Define the state interface
-export interface TimeState {
-  currentTime: string;
+export interface FileState {
+  selectedPath: string;
   loading: boolean;
   error: string | null;
 }
 
 // Initial state
-const initialState: TimeState = {
-  currentTime: '',
+const initialState: FileState = {
+  selectedPath: '',
   loading: false,
   error: null
 };
 
-// Time reducer
-const timeReducer = (state = initialState, action: AnyAction): TimeState => {
+// File reducer
+const fileReducer = (state = initialState, action: AnyAction): FileState => {
   switch (action.type) {
-    case FETCH_TIME_REQUEST:
+    case OPEN_FILE_REQUEST:
       return {
         ...state,
         loading: true,
         error: null
       };
-    case FETCH_TIME_SUCCESS:
+    case OPEN_FILE_SUCCESS:
       return {
         ...state,
         loading: false,
-        currentTime: action.payload,
+        selectedPath: action.payload,
         error: null
       };
-    case FETCH_TIME_FAILURE:
+    case OPEN_FILE_FAILURE:
       return {
         ...state,
         loading: false,
@@ -46,4 +46,4 @@ const timeReducer = (state = initialState, action: AnyAction): TimeState => {
   }
 };
 
-export default timeReducer;
+export default fileReducer;
