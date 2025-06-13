@@ -58,7 +58,7 @@ button:active {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.time-display {
+.time-display, .error-display {
   margin-top: 2rem;
   padding: 1.5rem;
   border-radius: 8px;
@@ -75,6 +75,17 @@ button:active {
   font-size: 1.5rem;
   font-weight: 500;
   margin: 1rem 0 0;
+}
+
+.error-display {
+  background-color: #fdeded;
+  border-left: 4px solid #d93025;
+}
+
+.error-display p {
+  color: #d93025;
+  font-weight: 500;
+  margin: 0;
 }
 
 @media (prefers-color-scheme: dark) {

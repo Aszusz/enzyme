@@ -1,0 +1,4 @@
+// Action types for time
+export const FETCH_TIME_REQUEST = 'FETCH_TIME_REQUEST';
+export const FETCH_TIME_SUCCESS = 'FETCH_TIME_SUCCESS';
+export const FETCH_TIME_FAILURE = 'FETCH_TIME_FAILURE';
