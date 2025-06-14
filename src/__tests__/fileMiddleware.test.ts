@@ -4,19 +4,19 @@ import { mockFileMiddleware, mockFileMiddlewareWithError } from './mocks/fileMid
 import { AC } from '../redux/actions/actions';
 import fileReducer from '../redux/reducers/fileReducer';
 
-describe('File Middleware Tests', () => {
+describe('Directory Middleware Tests', () => {
   describe('Success Middleware', () => {
-    it('should handle file open request and dispatch success action', async () => {
+    it('should handle directory open request and dispatch success action', async () => {
       // Create a store with the success middleware
       const store = createStore(fileReducer, applyMiddleware(mockFileMiddleware));
 
       // Initial state check
       expect(store.getState().loading).toBe(false);
-      expect(store.getState().selectedPath).toBe('');
+      expect(store.getState().selectedDirectoryPath).toBe('');
       expect(store.getState().error).toBe(null);
 
-      // Dispatch the open file request action
-      store.dispatch(AC.OPEN_FILE_REQUEST({}));
+      // Dispatch the open directory request action
+      store.dispatch(AC.OPEN_DIRECTORY_REQUEST({}));
 
       // Check loading state
       expect(store.getState().loading).toBe(true);
@@ -27,23 +27,23 @@ describe('File Middleware Tests', () => {
 
       // Check final state after success
       expect(store.getState().loading).toBe(false);
-      expect(store.getState().selectedPath).toBe('/mock/path/to/test-file.txt');
+      expect(store.getState().selectedDirectoryPath).toBe('/mock/path/to/test-directory');
       expect(store.getState().error).toBe(null);
     });
   });
 
   describe('Error Middleware', () => {
-    it('should handle file open request and dispatch error action', async () => {
+    it('should handle directory open request and dispatch error action', async () => {
       // Create a store with the error middleware
       const store = createStore(fileReducer, applyMiddleware(mockFileMiddlewareWithError));
 
       // Initial state check
       expect(store.getState().loading).toBe(false);
-      expect(store.getState().selectedPath).toBe('');
+      expect(store.getState().selectedDirectoryPath).toBe('');
       expect(store.getState().error).toBe(null);
 
-      // Dispatch the open file request action
-      store.dispatch(AC.OPEN_FILE_REQUEST({}));
+      // Dispatch the open directory request action
+      store.dispatch(AC.OPEN_DIRECTORY_REQUEST({}));
 
       // Check loading state
       expect(store.getState().loading).toBe(true);
@@ -54,8 +54,8 @@ describe('File Middleware Tests', () => {
 
       // Check final state after error
       expect(store.getState().loading).toBe(false);
-      expect(store.getState().selectedPath).toBe('');
-      expect(store.getState().error).toBe('Mock file dialog error');
+      expect(store.getState().selectedDirectoryPath).toBe('');
+      expect(store.getState().error).toBe('Mock directory dialog error');
     });
   });
 });

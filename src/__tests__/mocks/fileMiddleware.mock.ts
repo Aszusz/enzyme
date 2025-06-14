@@ -3,7 +3,7 @@ import { AT, AC, isAppAction } from '../../redux/actions/actions';
 
 /**
  * Mock implementation of the fileMiddleware for testing
- * This middleware intercepts OPEN_FILE_REQUEST actions and simulates a successful response
+ * This middleware intercepts OPEN_DIRECTORY_REQUEST actions and simulates a successful response
  */
 export const mockFileMiddleware: Middleware = store => next => action => {
   // Pass the action to the next middleware or reducer
@@ -14,11 +14,11 @@ export const mockFileMiddleware: Middleware = store => next => action => {
     return result;
   }
 
-  // Check if the action is a file dialog request
-  if (action.type === AT.OPEN_FILE_REQUEST) {
-    // Mock successful response with a test file path
+  // Check if the action is a directory dialog request
+  if (action.type === AT.OPEN_DIRECTORY_REQUEST) {
+    // Mock successful response with a test directory path
     setTimeout(() => {
-      store.dispatch(AC.OPEN_FILE_SUCCESS({ filePath: '/mock/path/to/test-file.txt' }));
+      store.dispatch(AC.OPEN_DIRECTORY_SUCCESS({ directoryPath: '/mock/path/to/test-directory' }));
     }, 0);
   }
 
@@ -27,7 +27,7 @@ export const mockFileMiddleware: Middleware = store => next => action => {
 
 /**
  * Mock implementation that simulates a failure response
- * This middleware intercepts OPEN_FILE_REQUEST actions and simulates an error response
+ * This middleware intercepts OPEN_DIRECTORY_REQUEST actions and simulates an error response
  */
 export const mockFileMiddlewareWithError: Middleware = store => next => action => {
   // Pass the action to the next middleware or reducer
@@ -38,13 +38,13 @@ export const mockFileMiddlewareWithError: Middleware = store => next => action =
     return result;
   }
 
-  // Check if the action is a file dialog request
-  if (action.type === AT.OPEN_FILE_REQUEST) {
+  // Check if the action is a directory dialog request
+  if (action.type === AT.OPEN_DIRECTORY_REQUEST) {
     // Mock error response
     setTimeout(() => {
       store.dispatch(
-        AC.OPEN_FILE_FAILURE({
-          error: 'Mock file dialog error',
+        AC.OPEN_DIRECTORY_FAILURE({
+          error: 'Mock directory dialog error',
         })
       );
     }, 0);
@@ -56,11 +56,11 @@ export const mockFileMiddlewareWithError: Middleware = store => next => action =
 /**
  * Mock for the Tauri invoke function
  * This function simulates the behavior of the Tauri invoke function
- * for the open_file_dialog command
+ * for the open_directory_dialog command
  */
 export const mockTauriInvoke = (command: string): Promise<string> => {
-  if (command === 'open_file_dialog') {
-    return Promise.resolve('/mock/path/to/test-file.txt');
+  if (command === 'open_directory_dialog') {
+    return Promise.resolve('/mock/path/to/test-directory');
   }
   return Promise.reject(new Error(`Unknown command: ${command}`));
 };
@@ -70,5 +70,5 @@ export const mockTauriInvoke = (command: string): Promise<string> => {
  * This function simulates a failure when invoking the Tauri API
  */
 export const mockTauriInvokeWithError = (): Promise<never> => {
-  return Promise.reject(new Error('Mock file dialog error'));
+  return Promise.reject(new Error('Mock directory dialog error'));
 };

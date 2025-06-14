@@ -5,28 +5,28 @@ import './App.css';
 
 function App() {
   const dispatch = useDispatch();
-  const { selectedPath, loading, error } = useSelector((state: RootState) => state.file);
+  const { selectedDirectoryPath, loading, error } = useSelector((state: RootState) => state.file);
 
-  const handleOpenFile = () => {
-    dispatch(AC.OPEN_FILE_REQUEST({}));
+  const handleOpenDirectory = () => {
+    dispatch(AC.OPEN_DIRECTORY_REQUEST({}));
   };
 
   return (
     <div className="container">
-      <h1>File Dialog Demo</h1>
+      <h1>Directory Dialog Demo</h1>
 
       <div className="button-container">
-        <button onClick={handleOpenFile} disabled={loading}>
-          Open File
+        <button onClick={handleOpenDirectory} disabled={loading}>
+          Open Directory
         </button>
       </div>
 
       {loading && <p className="loading">Opening dialog...</p>}
 
-      {selectedPath && (
+      {selectedDirectoryPath && (
         <div className="path-container">
-          <h2>Selected Path</h2>
-          <p className="path">{selectedPath}</p>
+          <h2>Selected Directory</h2>
+          <p className="path">{selectedDirectoryPath}</p>
         </div>
       )}
 
