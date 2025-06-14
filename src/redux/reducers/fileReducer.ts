@@ -1,5 +1,5 @@
-import { OPEN_FILE_REQUEST, OPEN_FILE_SUCCESS, OPEN_FILE_FAILURE } from '../actions/types';
-import { AnyAction } from 'redux';
+import { AT, isAppAction } from '../actions/actions';
+import { UnknownAction } from 'redux';
 
 // Define the state interface
 export interface FileState {
@@ -16,26 +16,32 @@ const initialState: FileState = {
 };
 
 // File reducer
-const fileReducer = (state = initialState, action: AnyAction): FileState => {
+const fileReducer = (state = initialState, action: UnknownAction): FileState => {
+  // Check if it's a valid AppAction
+  if (!isAppAction(action)) {
+    return state;
+  }
+
+  // Now TypeScript knows this is an AppAction
   switch (action.type) {
-    case OPEN_FILE_REQUEST:
+    case AT.OPEN_FILE_REQUEST:
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case OPEN_FILE_SUCCESS:
+    case AT.OPEN_FILE_SUCCESS:
       return {
         ...state,
         loading: false,
-        selectedPath: action.payload,
+        selectedPath: action.payload.filePath,
         error: null,
       };
-    case OPEN_FILE_FAILURE:
+    case AT.OPEN_FILE_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        error: (action.payload as { error: string }).error,
       };
     default:
       return state;

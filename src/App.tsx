@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './redux/reducers';
-import { openFileRequest } from './redux/actions/fileActions';
+import { AC } from './redux/actions/actions';
 import './App.css';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   const { selectedPath, loading, error } = useSelector((state: RootState) => state.file);
 
   const handleOpenFile = () => {
-    dispatch(openFileRequest());
+    dispatch(AC.OPEN_FILE_REQUEST({}));
   };
 
   return (
