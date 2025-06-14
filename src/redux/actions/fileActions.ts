@@ -1,22 +1,18 @@
-import { 
-  OPEN_FILE_REQUEST, 
-  OPEN_FILE_SUCCESS, 
-  OPEN_FILE_FAILURE
-} from './types';
+import { OPEN_FILE_REQUEST, OPEN_FILE_SUCCESS, OPEN_FILE_FAILURE } from './types';
 
 // Action creators for file dialog
 export const openFileRequest = () => ({
-  type: OPEN_FILE_REQUEST
+  type: OPEN_FILE_REQUEST,
 });
 
 export const openFileSuccess = (filePath: string) => ({
   type: OPEN_FILE_SUCCESS,
-  payload: filePath
+  payload: filePath,
 });
 
 export const openFileFailure = (error: string) => ({
   type: OPEN_FILE_FAILURE,
-  payload: error
+  payload: error,
 });
 
 // Action types for TypeScript
@@ -34,7 +30,4 @@ export interface OpenFileFailureAction {
   payload: string;
 }
 
-export type FileActionTypes = 
-  | OpenFileRequestAction 
-  | OpenFileSuccessAction 
-  | OpenFileFailureAction;
+export type FileActionTypes = OpenFileRequestAction | OpenFileSuccessAction | OpenFileFailureAction;

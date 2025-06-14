@@ -3,7 +3,7 @@ import fileReducer, { FileState } from './fileReducer';
 
 // Root reducer
 const rootReducer = combineReducers({
-  file: fileReducer
+  file: fileReducer,
 });
 
 // Root state type

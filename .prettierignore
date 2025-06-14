@@ -1,0 +1,17 @@
+# Build artifacts
+dist/
+build/
+target/
+
+# Generated files
+node_modules/
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Tauri specific
+src-tauri/target/
+
+# Other
+.DS_Store
+.env

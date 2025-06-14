@@ -24,10 +24,7 @@
           "identifier": "default-capability",
           "description": "Default capability for the main window",
           "windows": ["*"],
-          "permissions": [
-            "core:default",
-            "dialog:default"
-          ]
+          "permissions": ["core:default", "dialog:default"]
         }
       ]
     }

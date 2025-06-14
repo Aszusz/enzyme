@@ -1,8 +1,4 @@
-import { 
-  OPEN_FILE_REQUEST, 
-  OPEN_FILE_SUCCESS, 
-  OPEN_FILE_FAILURE
-} from '../actions/types';
+import { OPEN_FILE_REQUEST, OPEN_FILE_SUCCESS, OPEN_FILE_FAILURE } from '../actions/types';
 import { AnyAction } from 'redux';
 
 // Define the state interface
@@ -16,7 +12,7 @@ export interface FileState {
 const initialState: FileState = {
   selectedPath: '',
   loading: false,
-  error: null
+  error: null,
 };
 
 // File reducer
@@ -26,20 +22,20 @@ const fileReducer = (state = initialState, action: AnyAction): FileState => {
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
       };
     case OPEN_FILE_SUCCESS:
       return {
         ...state,
         loading: false,
         selectedPath: action.payload,
-        error: null
+        error: null,
       };
     case OPEN_FILE_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
       };
     default:
       return state;
