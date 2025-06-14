@@ -1,11 +1,10 @@
 import { actionDef, makeActionTypes, makeActionCreators, MakeActionUnion } from './action-helper';
-import { OPEN_FILE_REQUEST, OPEN_FILE_SUCCESS, OPEN_FILE_FAILURE } from './types';
 import { isAction } from 'redux';
 
 const actions = {
-  [OPEN_FILE_REQUEST]: actionDef(),
-  [OPEN_FILE_SUCCESS]: actionDef<{ filePath: string }>(),
-  [OPEN_FILE_FAILURE]: actionDef<{ error: string }>(),
+  ['OPEN_DIRECTORY_REQUEST']: actionDef(),
+  ['OPEN_DIRECTORY_SUCCESS']: actionDef<{ directoryPath: string }>(),
+  ['OPEN_DIRECTORY_FAILURE']: actionDef<{ error: string }>(),
 };
 
 export const AT = makeActionTypes(actions);
